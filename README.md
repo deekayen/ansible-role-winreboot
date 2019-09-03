@@ -10,21 +10,23 @@ Requirements
 
 N/A
 
-Role Variables (with defaults indicated)
+Default Variables
 --------------
 
-# Setting simulate to yes will force the role to think the node has a pending reboot.
-winreboot_simulate: no
+Setting simulate to yes will force the role to think the node has a pending reboot.
 
-# Reboot_behavior controls when to reboot the node. valid options are:
-# - never
-# - if_required
-# - always
-winreboot_reboot_behavior: if_required
+`winreboot_simulate: no`
 
-# Maximum seconds to wait for a single successful TCP
-# connection to the WinRM endpoint before trying again.
-winreboot_connect_timeout: 5
+Reboot_behavior controls when to reboot the node. valid options are:
+* never
+* if_required
+* always
+
+`winreboot_reboot_behavior: if_required`
+
+Maximum seconds to wait for a single successful TCP connection to the WinRM endpoint before trying again.
+
+`winreboot_connect_timeout: 5`
 
 Dependencies
 ------------
