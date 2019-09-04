@@ -29,6 +29,7 @@
 - name: Reboot.
   win_reboot:
     connect_timeout: "{{ winreboot_connect_timeout | default(omit) }}"
+    reboot_timeout: "{{ winreboot_reboot_timeout | default(omit) }}"
   check_mode: "{{ winreboot_simulate | bool | ternary('yes', 'no') }}"
   register: reboot_return
   when: do_reboot

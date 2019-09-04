@@ -28,6 +28,10 @@ Maximum seconds to wait for a single successful TCP connection to the WinRM endp
 
 `winreboot_connect_timeout: 5`
 
+Maximum seconds to wait for machine to re-appear on the network and respond to a test command.
+
+`winreboot_reboot_timeout: 600`
+
 Dependencies
 ------------
 

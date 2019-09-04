@@ -10,3 +10,7 @@ winreboot_reboot_behavior: if_required
 # Maximum seconds to wait for a single successful TCP
 # connection to the WinRM endpoint before trying again.
 winreboot_connect_timeout: 5
+
+# Maximum seconds to wait for machine to re-appear on
+# the network and respond to a test command.
+winreboot_reboot_timeout: 600
