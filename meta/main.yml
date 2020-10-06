@@ -7,6 +7,9 @@ galaxy_info:
   license: BSD
   min_ansible_version: 2.1
 
+  github_branch: main
+  issue_tracker_url: https://github.com/deekayen/ansible-role-winreboot/issues
+
   platforms:
     - name: Windows
       versions:
