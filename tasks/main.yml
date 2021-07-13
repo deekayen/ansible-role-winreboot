@@ -34,6 +34,7 @@
   register: reboot_return
   when: do_reboot
 
-- debug:
+- name: Print reboot information in debug mode.
+  debug:
     var: reboot_return
     verbosity: 2
