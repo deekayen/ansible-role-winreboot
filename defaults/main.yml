@@ -1,3 +1,5 @@
+---
+
 # Setting simulate to yes will force the role to think the node has a pending reboot.
 winreboot_simulate: no
 
