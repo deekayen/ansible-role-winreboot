@@ -2,6 +2,7 @@
 
 galaxy_info:
   role_name: win_reboot
+  namespace: deekayen
   author: Trond Hindenes
   description: A role to manage reboots for Windows. Check for pending reboots, then (optionally) perform a reboot on the nodes that need it.
   license: BSD
