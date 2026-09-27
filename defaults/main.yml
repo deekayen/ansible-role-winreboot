@@ -1,7 +1,6 @@
 ---
-
-# Setting simulate to yes will force the role to think the node has a pending reboot.
-winreboot_simulate: no
+# Setting simulate to true runs the reboot in check mode, so nothing reboots.
+winreboot_simulate: false
 
 # Reboot_behavior controls when to reboot the node. valid options are:
 # - never

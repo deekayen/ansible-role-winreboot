@@ -1,0 +1,10 @@
+---
+- name: Assert the reboot timeouts are positive.
+  ansible.builtin.assert:
+    that:
+      - winreboot_connect_timeout | int >= 1
+      - winreboot_reboot_timeout | int >= winreboot_connect_timeout | int
+    fail_msg: >-
+      winreboot_connect_timeout must be at least 1 second and no longer than
+      winreboot_reboot_timeout.
+    quiet: true

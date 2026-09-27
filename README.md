@@ -13,9 +13,9 @@ N/A
 Default Variables
 --------------
 
-Setting simulate to yes will force the role to think the node has a pending reboot.
+Setting simulate to true runs the reboot in check mode, so nothing reboots.
 
-`winreboot_simulate: no`
+`winreboot_simulate: false`
 
 Reboot_behavior controls when to reboot the node. valid options are:
 * never
@@ -43,7 +43,7 @@ Example Playbook
     - hosts: platform_windows
 
       vars:
-        winreboot_simulate: yes
+        winreboot_simulate: true
 
       roles:
         - role: deekayen.win_reboot

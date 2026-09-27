@@ -1,12 +1,11 @@
 ---
-
 galaxy_info:
-  role_name: win_reboot
   namespace: deekayen
+  role_name: win_reboot
   author: Trond Hindenes
   description: A role to manage reboots for Windows. Check for pending reboots, then (optionally) perform a reboot on the nodes that need it.
   license: BSD
-  min_ansible_version: 2.1
+  min_ansible_version: "2.15"
 
   github_branch: main
   issue_tracker_url: https://github.com/deekayen/ansible-role-winreboot/issues

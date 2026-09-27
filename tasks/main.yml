@@ -1,40 +1,40 @@
 ---
+- name: Validate role variables.
+  ansible.builtin.import_tasks: assert.yml
+  tags:
+    - always
 
 - name: Show pending reboot status from fact gathering.
-  debug:
-    var: ansible_reboot_pending
+  ansible.builtin.debug:
+    var: ansible_facts.reboot_pending
     verbosity: 1
 
-- name: Set reboot flag initial value to false.
-  set_fact:
-    do_reboot: false
-  changed_when: False
-
 - name: Show configured reboot behavior.
-  debug:
+  ansible.builtin.debug:
     var: winreboot_reboot_behavior
     verbosity: 2
 
-- name: Set reboot flag based on pending reboot / simulate.
-  set_fact:
-    do_reboot: true
-  when: (ansible_reboot_pending and winreboot_reboot_behavior == 'if_required') or winreboot_reboot_behavior == 'always'
-  changed_when: False
+- name: Set reboot flag based on pending reboot and behavior.
+  ansible.builtin.set_fact:
+    winreboot_do_reboot: >-
+      {{ winreboot_reboot_behavior == 'always'
+         or (winreboot_reboot_behavior == 'if_required'
+             and ansible_facts.reboot_pending | default(false) | bool) }}
 
 - name: Reboot status.
-  debug:
-    var: do_reboot
+  ansible.builtin.debug:
+    var: winreboot_do_reboot
     verbosity: 2
 
 - name: Reboot.
-  win_reboot:
+  ansible.windows.win_reboot:
     connect_timeout: "{{ winreboot_connect_timeout | default(omit) }}"
     reboot_timeout: "{{ winreboot_reboot_timeout | default(omit) }}"
-  check_mode: "{{ winreboot_simulate | bool | ternary('yes', 'no') }}"
-  register: reboot_return
-  when: do_reboot
+  check_mode: "{{ winreboot_simulate | bool }}"
+  register: winreboot_result
+  when: winreboot_do_reboot | bool
 
 - name: Print reboot information in debug mode.
-  debug:
-    var: reboot_return
+  ansible.builtin.debug:
+    var: winreboot_result
     verbosity: 2
