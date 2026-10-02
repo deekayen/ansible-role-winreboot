@@ -4,7 +4,7 @@ galaxy_info:
   role_name: win_reboot
   author: Trond Hindenes
   description: A role to manage reboots for Windows. Check for pending reboots, then (optionally) perform a reboot on the nodes that need it.
-  license: BSD
+  license: BSD-3-Clause
   min_ansible_version: "2.15"
 
   github_branch: main
